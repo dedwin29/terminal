@@ -14,7 +14,8 @@ if (mysqli_affected_rows($con) == 1) {
     echo "<head><script>alert('Profile NOT Added, Check Again');</script></head></html>";
     echo "<meta http-equiv='refresh' content='0; url=new_entry.php'>";
 }
-if (isset($_POST['p_name']) && isset($_POST['mem_type']) && isset($_POST['total']) && isset($_POST['age']) && isset($_POST['paid'])) {
+if (isset($_POST['p_name']) && isset($_POST['mem_type']) && isset($_POST['total']) && isset($_POST['paid']))
+{
     function getRandomWord($len = 3)
     {
         $word = array_merge(range('a', 'z'), range('0', '9'));
@@ -39,30 +40,31 @@ if (isset($_POST['p_name']) && isset($_POST['mem_type']) && isset($_POST['total'
         }
     }
 
-    $proof = $_POST['proof'];
-    if (isset($_POST['other_proof'])) {
-        $other_proof = $_POST['other_proof'];
-    } else {
-        $other_proof = " ";
-    }
+
     $invoice   = substr(time(), 2, 10) . getRandomWord();
     $date      = $_POST['date'];
-    $age       = rtrim($_POST['age']);
+  //  $age       = rtrim($_POST['age']);
     $full_name = rtrim($_POST['p_name']);
     $email     = rtrim($_POST['email']);
-    $address   = rtrim($_POST['add']);
-    $zipcode   = rtrim($_POST['zipcode']);
-    $birthdate   = $_POST['birthdate'];
+  //  $address   = rtrim($_POST['add']);
+  //  $zipcode   = rtrim($_POST['zipcode']);
+  //  $birthdate   = $_POST['birthdate'];
     $contact   = rtrim($_POST['contact']);
-    $sex       = rtrim($_POST['sex']);
-    $height    = rtrim($_POST['height']);
-    $weight    = rtrim($_POST['weight']);
-    $nationality    = rtrim($_POST['nationality']);
-    $facebookaccount    = rtrim($_POST['facebookaccount']);
-    $twitteraccount    = rtrim($_POST['twitteraccount']);
-    $contactperson    = rtrim($_POST['contactperson']);
-    $previousgym    = rtrim($_POST['previousgym']);
-    $yearstraining    = rtrim($_POST['yearstraining']);
+    $apellido1 = rtrim($_POST['apellido1']);
+    $apellido2 = rtrim($_POST['apellido2']);
+    $cedula = rtrim($_POST['ci']);
+    $observaciones = rtrim($_POST['observaciones']);
+    $apellido1 = rtrim($_POST['apellido1']);
+
+  //  $sex       = rtrim($_POST['sex']);
+  //  $height    = rtrim($_POST['height']);
+  //  $weight    = rtrim($_POST['weight']);
+  //  $nationality    = rtrim($_POST['nationality']);
+  //  $facebookaccount    = rtrim($_POST['facebookaccount']);
+  //  $twitteraccount    = rtrim($_POST['twitteraccount']);
+  //  $contactperson    = rtrim($_POST['contactperson']);
+  //  $previousgym    = rtrim($_POST['previousgym']);
+    //$yearstraining    = rtrim($_POST['yearstraining']);
     $total     = $_POST['total'];
     $paid      = $_POST['paid'];
     $mod_date  = strtotime($date . "+ $days days");
@@ -82,12 +84,12 @@ if (isset($_POST['p_name']) && isset($_POST['mem_type']) && isset($_POST['total'
 
             $p_id = $row['newid'];
 
-             mysqli_query($con, "UPDATE user_data SET name='$full_name', address='$address', zipcode='$zipcode', birthdate='$birthdate', contact='$contact', email='$email', height='$height', weight='$weight', nationality='$nationality', facebookaccount='$facebookaccount', twitteraccount='$twitteraccount', contactperson='$contactperson', previousgym='$previousgym', yearstraining='$yearstraining', joining='$date', age='$age', proof='$proof', other_proof='$other_proof', sex='$sex' WHERE wait='yes'");
+             mysqli_query($con, "UPDATE user_data SET name='$full_name',joining='$date',apellido1_cli='$apellido1', apellido2_cli='$apellido2', cedula_cli='$cedula', contact='$contact', email='$email',observacion_cli='$observaciones', nombreuser='$ci', password='$ci'  WHERE wait='yes'");
             $bal = $total - $paid;
-
+//,address=NULL, zipcode=NULL, birthdate=NULL,height=NULL, weight=NULL,nationality=NULL, facebookaccount=NULL, twitteraccount=NULL, contactperson=NULL, previousgym=NULL, yearstraining=NULL, age=NULL, proof=NULL, other_proof=NULL, sex=NULL
             mysqli_query($con, "INSERT INTO subsciption (mem_id,name,sub_type,paid_date,total,paid,expiry,invoice,sub_type_name,bal,exp_time,renewal)
 VALUES ('$p_id','$full_name','$mem_type','$date','$total','$paid','$expiry','$invoice','$name_type','$bal','$exp_time','yes')");
-            echo "<head><script>alert('Member Added ,');</script></head></html>";
+            echo "<head><script>alert('Miembro Agragado ,');</script></head></html>";
 
             mysqli_query($con, "UPDATE user_data SET wait='no' WHERE wait='yes'");
         }
@@ -95,7 +97,7 @@ VALUES ('$p_id','$full_name','$mem_type','$date','$total','$paid','$expiry','$in
 
 
 } else {
-    echo "<head><script>alert('Profile NOT Added, Check Again');</script></head></html>";
+    echo "<head><script>alert('Perfil No agregado, intente nuevamente FINAL');</script></head></html>";
     echo "<meta http-equiv='refresh' content='0; url=new_entry.php'>";
 
 }
@@ -222,18 +224,22 @@ echo $full_name;
 ?></span></td>
 				</tr>
 				<tr>
-					<th><span  >Edad, Sexo</span></th>
-					<td><span  ><?php
-echo $age . " / " . $sex;
-?></span></td>
-				</tr>
-				<tr>
-					<th><span  >Altura / Peso</span></th>
-					<td><?php
-echo $height . "  FEET / " . $weight . " Kg";
-?></span></td>
-				</tr>
-			</table>
+          <tr>
+
+  					<th><span  >Cedula</span></th>
+  					<td><span  ><?php
+  echo $cedula ;
+  ?></span></td>
+  				</tr>
+  				<tr>
+
+  					<th><span  >Email</span></th>
+  					<td><?php
+  echo $email;
+  ?></span></td>
+  				</tr>
+  			</table>
+
 <table class="inventory">
 				<thead>
 					<tr>

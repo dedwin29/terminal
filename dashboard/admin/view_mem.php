@@ -205,7 +205,10 @@ page_protect();
 
 							                $sno++;
 
-							                echo "<td><form action='read_member.php' method='post'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='View History ' class='btn btn-info'/></form><form action='edit_member.php' method='post'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Edit' class='btn btn-warning'/></form><form action='del_member.php' method='post' onSubmit='return ConfirmDelete();'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Delete ' class='btn btn-danger'/></form></td></tr>";
+							                echo "<td><form action='read_member.php' method='post'><input type='hidden' name='name' value='" . $msgid . "'/>
+                              <input type='submit' value='View History ' class='btn btn-info'/></form>
+                              <form action='edit_member.php' method='post'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Edit' class='btn btn-warning'/></form><form action='del_member.php' method='post' onSubmit='return ConfirmDelete();'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Delete ' class='btn btn-danger'/>
+                              </form></td></tr>";
 							                $msgid = 0;
 							            }
 							        }

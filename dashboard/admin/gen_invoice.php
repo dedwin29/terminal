@@ -35,10 +35,11 @@ if (isset($_POST['name'])) {
             if (mysqli_affected_rows($con) == 1) {
                 while ($row11 = mysqli_fetch_array($result11, MYSQLI_ASSOC)) {
 
-                    $age    = $row11['age'];
-                    $sex    = $row11['sex'];
-                    $height = $row11['height'];
-                    $weight = $row11['weight'];
+                    $apellido1= $row11['apellido1_cli'];
+                    $apellido2= $row11['apellido2_cli'];
+                    $cedula = $row11['cedula_cli'];
+                    $email = $row11['email'];
+
                 }
             }
         }
@@ -147,7 +148,7 @@ echo $invoice;
 	</head>
 	<body>
 		<header>
-			<a href="view_mem.php"><h1>Invoice (Re-Print Slip)</h1></a>
+			<a href="view_mem.php"><h1>Factura</h1></a>
       <address>
         <p>Platea21's Gym</p>
         <p>3rd flr. JTL bldg. B. S. Tacna, Peru</p>
@@ -183,22 +184,25 @@ echo $memid . " / " . $regid;
 				<tr>
 					<th><span  >Nombre</span></th>
 					<td><span  ><?php
-echo $full_name;
+echo $full_name." ".$apellido1." ".$apellido2;
 ?></span></td>
 				</tr>
+
 				<tr>
-					<th><span  >Edad, Sexo</span></th>
+					<th><span  >Cedula</span></th>
 					<td><span  ><?php
-echo $age . " / " . $sex;
+echo $cedula ;
 ?></span></td>
 				</tr>
 				<tr>
-					<th><span  >Altura / Peso</span></th>
+					<th><span  >Email</span></th>
 					<td><?php
-echo $height . " FEET / " . $weight . " Kg";
+echo $email;
 ?></span></td>
 				</tr>
 			</table>
+
+
 <table class="inventory">
 				<thead>
 					<tr>

@@ -256,7 +256,7 @@ page_protect();
 
 						        $sno++;
 
-						        echo "<td><form action='gen_invoice.php' method='post'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Print Invoice ' class='btn btn-info'/></form><form action='edit_invoice.php' method='post'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Edit Invoice ' class='btn btn-warning'/></form><form action='del_invoice.php' method='post' onSubmit='return ConfirmDelete();'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Delete Invoice ' class='btn btn-danger'/></form></td></tr>";
+						        echo "<td><form action='gen_invoice.php' method='post' target='_blank'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Print Invoice ' class='btn btn-info'/></form><form action='edit_invoice.php' method='post'  target='_blank'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Edit Invoice ' class='btn btn-warning'/></form><form action='del_invoice.php' method='post' onSubmit='return ConfirmDelete();'><input type='hidden' name='name' value='" . $msgid . "'/><input type='submit' value='Delete Invoice ' class='btn btn-danger'/></form></td></tr>";
 						        $msgid = 0;
 						    }
 
